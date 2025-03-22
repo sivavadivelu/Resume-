@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+3<!DOCTYPE html>
 <html>
 <head>
     <title>Portfolio</title>
     <style>
         body {
-            font-family: Arial;
+            font-family: Times New Roman;
             margin: 0;
             padding: 0;
             background-color: #E13F79;
@@ -96,7 +96,7 @@
         <div class="header-content">
             <!-- Add your profile picture here -->
             <img src="./Siva.jpg" alt="profile-picture placeholder" class="w-full h-full object-cover profile-img profile-picture"/>
-            <h1>SIVAVADIVELU S </h1>
+            <h1>Sivavadivelu S </h1>
             <p>I am a BCA student</p>
         </div>
     </header>
@@ -140,11 +140,15 @@
                 <li>Java
                
                 </li>
+                <li>C</li>
+                <li>C++</li>
+                <li>JAVA</li->
                 <li>Java script</li>
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>PHP</li>
-                <li>Editing</li>
+                <li>TYPEWRITING</li>
+                <li>EDITING</li>
             </ul>
         </div>
     </section>
@@ -162,121 +166,38 @@
         </div>
     </section>
 
-
+    <section id="resume">
+    
+        <div class="section-content">
+            <center>
+            <h2>Resume</h2>
+            <a href="./file.pdf" target="_blank" class="download-button">Download CV</a>
+        </center>
+        </div>
+        
     </section>
 
+    <footer>
+        <p>&copy; 2025 sivavadivelu s</p>
+    </footer>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Smooth scrolling with offset for the header
-        const headerHeight = document.querySelector("header").offsetHeight;
+        // Smooth scrolling to section when clicking on navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute("href").substring(1);
+
+                const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - headerHeight,
-                        behavior: "smooth"
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
-
-        // Highlight active section in navbar while scrolling
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll("nav ul li a");
-
-        function highlightNav() {
-            let scrollY = window.scrollY;
-
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop - headerHeight;
-                const sectionHeight = section.offsetHeight;
-
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    navLinks.forEach((link) => {
-                        link.classList.remove("active");
-                        if (link.getAttribute("href").substring(1) === section.id) {
-                            link.classList.add("active");
-                        }
-                    });
-                }
-            });
-        }
-
-        window.addEventListener("scroll", highlightNav);
-
-        // Mobile navigation toggle
-        const nav = document.querySelector("nav ul");
-        const toggleButton = document.createElement("button");
-        toggleButton.innerText = "☰";
-        toggleButton.style.background = "none";
-        toggleButton.style.border = "none";
-        toggleButton.style.color = "white";
-        toggleButton.style.fontSize = "24px";
-        toggleButton.style.cursor = "pointer";
-        toggleButton.style.position = "absolute";
-        toggleButton.style.top = "10px";
-        toggleButton.style.right = "20px";
-        toggleButton.style.display = "none";
-
-        document.querySelector("nav").prepend(toggleButton);
-
-        toggleButton.addEventListener("click", () => {
-            nav.classList.toggle("show");
-        });
-
-        function checkScreenSize() {
-            if (window.innerWidth <= 768) {
-                toggleButton.style.display = "block";
-                nav.style.display = "none";
-                nav.classList.remove("show");
-            } else {
-                toggleButton.style.display = "none";
-                nav.style.display = "flex";
-            }
-        }
-
-        checkScreenSize();
-        window.addEventListener("resize", checkScreenSize);
-
-        // Update footer year dynamically
-        document.querySelector("footer p").innerHTML = `&copy; ${new Date().getFullYear()} Sanjay G`;
-
-    });
-</script>
-<!-- Resume Download Button -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-<script>
-
-    function takeScreenshotAndSavePDF() {
-    html2canvas(document.body).then(canvas => {
-        // Convert canvas to image
-        let imgData = canvas.toDataURL('image/png');
-
-        // Initialize jsPDF
-        const { jsPDF } = window.jspdf;
-        let pdf = new jsPDF('p', 'mm', 'a4'); // Portrait, millimeters, A4 size
-
-        // Convert image to fit A4 size
-        let imgWidth = 210; // A4 width in mm
-        let imgHeight = (canvas.height * imgWidth) / canvas.width; // Maintain aspect ratio
-
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-        pdf.save('portfolio.pdf'); // Save PDF file
-    });
-}
-</script>
-<section id="resume">
-    <div class="section-content">
-        <h2>Resume</h2>
-        <button class="download-button" onclick="takeScreenshotAndSavePDF()">Download PDF</button>
-    </div>
-</section>
+    </script>
 </body>
 </html>
